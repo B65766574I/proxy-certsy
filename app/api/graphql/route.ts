@@ -1,5 +1,6 @@
 // app/api/certsyjwt/route.ts
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 export async function GET(request: NextRequest) {
     const res = await fetch(
@@ -29,6 +30,9 @@ export async function GET(request: NextRequest) {
       })
     
     const graphqlData = await graphqlRes.json();
+
+    const path = "/api/graphql";
+    revalidatePath(path);
 
     return NextResponse.json(graphqlData);
 }
