@@ -14,3 +14,5 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(data.jwt);
 }
+
+export const runtime = 'edge';
