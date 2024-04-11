@@ -9,7 +9,7 @@ export default function Home() {
 	const selectvalue = "bash";
 
 	const frontend = process.env.NEXT_PUBLIC_BASE_URL;
-	const textfield = 'curl --location \'https://app.certsy.com/api/v1/candidate/graphql_query.json\' \\\n--header \'content-type: application/json\' \\\n--header "authorization: Bearer $(curl -s GET frontend/api/certsyjwt | tr -d \'"\')" \\\n--data \'[{"operationName": "getDashboardData","variables": {},"query": "query getDashboardData {\\n\\n  auRtw: candidateAuRtwSubmissionSignalCollectionFetch {\\n items {\\n id\\n status\\n createdAt\\n verificationResult {\\n expirationStatus\\n expiryDate\\n fullName\\n resultDisplayText\\n verificationDocumentFullName\\n verificationDocument\\n visaSubclassDisplayText\\n verifiedAt\\n }\\n }\\n}\\n\\n  education: candidateEducationSubmissionCollectionFetch {\\n items {\\n id\\n status\\n createdAt\\n verificationResult {\\n fullName\\n educationProvider\\n qualification\\n conferralYear\\n verifiedAt\\n courseName\\n majors\\n withHonours\\n}\\n}\\n}\\n}"}]\''.replace('frontend', frontend);
+	const textfield = 'curl --location \'https://app.certsy.com/api/v1/candidate/graphql_query.json\' \\\n--header \'content-type: application/json\' \\\n--header "authorization: Bearer $(curl -s frontend/api/certsyjwt --retry 2 --retry-delay 20 | tr -d \'"\')" \\\n--data \'[{"operationName": "getDashboardData","variables": {},"query": "query getDashboardData {\\n\\n  auRtw: candidateAuRtwSubmissionSignalCollectionFetch {\\n items {\\n id\\n status\\n createdAt\\n verificationResult {\\n expirationStatus\\n expiryDate\\n fullName\\n resultDisplayText\\n verificationDocumentFullName\\n verificationDocument\\n visaSubclassDisplayText\\n verifiedAt\\n }\\n }\\n}\\n\\n  education: candidateEducationSubmissionCollectionFetch {\\n items {\\n id\\n status\\n createdAt\\n verificationResult {\\n fullName\\n educationProvider\\n qualification\\n conferralYear\\n verifiedAt\\n courseName\\n majors\\n withHonours\\n}\\n}\\n}\\n}"}]\''.replace('frontend', frontend);
 	const output = [
 		{
 		  "data": {
@@ -63,19 +63,24 @@ export default function Home() {
 				<h1 className={title({ color: "violet" })}>Chidambaram</h1>
 				<br />
 			</div>
+			<div className="w-4/5">
+				<h2 className={subtitle()}>Curl Command</h2>
+			</div>
 			<div className="h-full w-4/5 flex flex-col rounded-md overflow-hidden text-xs">
 				<SyntaxHighlighter language={selectvalue} style={atomOneDarkReasonable}>
 					{textfield}
 				</SyntaxHighlighter>
 			</div>
-			{/* <CurlButton /> */}
+			<div className="w-4/5">
+				<h2 className={subtitle()}>Expected Output</h2>
+			</div>
 			<div className="h-full w-4/5 flex flex-col rounded-md overflow-hidden text-xs">
 				<SyntaxHighlighter language="json" style={atomOneDarkReasonable}>
 					{JSON.stringify(output, null, 1)}
 				</SyntaxHighlighter>
 			</div>
-			<DataCard CardType = "auRtw"/>
-			<DataCard CardType = "education"/>
+			<DataCard CardType = "auRtw" time = {Date.now()} />
+			<DataCard CardType = "education" time = {Date.now()} />
 		</section>
 	);
 }

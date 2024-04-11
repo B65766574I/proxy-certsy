@@ -4,23 +4,29 @@ import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nex
 import { useState, useEffect } from 'react'
 import {Spinner} from "@nextui-org/react";
 
-export default function DataCard({CardType}: {CardType: string}) {
+export default function DataCard({CardType, time}: {CardType: string, time: any}) {
     const [data, setData] = useState(null);
     const [isLoading, setLoading] = useState(true);
- 
-  useEffect(() => {
-    fetch('/api/graphql')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
-      })
-  }, []);
+    // const [count, setCount] = useState(0);
 
-  if (isLoading) return <Spinner />
-  if (!data) return <Spinner />
+    useEffect(() => {
+        fetch('/api/graphql')
+        .then((res) => res.json())
+        .then((data) => {
+            setData(data)
+            setLoading(false)
+        })
+    }, [isLoading]);
 
+  if (isLoading) {
+    return <Spinner />
+  }
+
+  if (!data) {
+    return <Spinner />
+  }
     const VerifiedOn = new Date(data[0]["data"][CardType]["items"][0]["verificationResult"]["verifiedAt"]);
+    
 
   if (CardType == "education") {
     var cardTitle = "Education Qualifications";
@@ -61,43 +67,45 @@ export default function DataCard({CardType}: {CardType: string}) {
         </div>
         <CardBody>
             <table className="table-fixed">
-                <tr className="col-w/2">
-                    <td>
-                        <p className="text-xs">
-                            {fieldNameOne}
-                        </p>
-                        <p className="text-sm">
-                            {fieldValueOne}
-                        </p>
-                    </td>
-                    <td>
-                        <p className="text-xs">
-                            {fieldNameTwo}
-                        </p>
-                        <p className="text-sm">
-                            {fieldValueTwo}
-                        </p>
-                    </td>
-                </tr>
-                <br />
-                <tr>
-                    <td>
-                        <p className="text-xs">
-                            {fieldNameThree}
-                        </p>
-                        <p className="text-sm">
-                            {fieldValueThree}
-                        </p>
-                    </td>
-                    <td>
-                        <p className="text-xs">
-                            Verified On
-                        </p>
-                        <p className="text-sm">
-                            {VerifiedOn.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'})}
-                        </p>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr className="col-w/2">
+                        <td>
+                            <p className="text-xs">
+                                {fieldNameOne}
+                            </p>
+                            <p className="text-sm">
+                                {fieldValueOne}
+                            </p>
+                        </td>
+                        <td>
+                            <p className="text-xs">
+                                {fieldNameTwo}
+                            </p>
+                            <p className="text-sm">
+                                {fieldValueTwo}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p className="text-xs">
+                                {fieldNameThree}
+                            </p>
+                            <p className="text-sm">
+                                {fieldValueThree}
+                            </p>
+                        </td>
+                        <td>
+                            <p className="text-xs">
+                                Verified On
+                            </p>
+                            <p className="text-sm">
+                                {VerifiedOn.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'})}
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+
             </table>
         </CardBody>
     </Card>
