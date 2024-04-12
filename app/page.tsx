@@ -7,8 +7,8 @@ import CurlButton from "../components/curlButton";
 
 export default function Home() {
 	const selectvalue = "bash";
-
 	const frontend = process.env.NEXT_PUBLIC_BASE_URL;
+
 	const textfield = 'curl --location \'https://app.certsy.com/api/v1/candidate/graphql_query.json\' \\\n--header \'content-type: application/json\' \\\n--header "authorization: Bearer $(curl -s frontend/api/certsyjwt --retry 2 --retry-delay 20 | tr -d \'"\')" \\\n--data \'[{"operationName": "getDashboardData","variables": {},"query": "query getDashboardData {\\n\\n  auRtw: candidateAuRtwSubmissionSignalCollectionFetch {\\n items {\\n id\\n status\\n createdAt\\n verificationResult {\\n expirationStatus\\n expiryDate\\n fullName\\n resultDisplayText\\n verificationDocumentFullName\\n verificationDocument\\n visaSubclassDisplayText\\n verifiedAt\\n }\\n }\\n}\\n\\n  education: candidateEducationSubmissionCollectionFetch {\\n items {\\n id\\n status\\n createdAt\\n verificationResult {\\n fullName\\n educationProvider\\n qualification\\n conferralYear\\n verifiedAt\\n courseName\\n majors\\n withHonours\\n}\\n}\\n}\\n}"}]\''.replace('frontend', frontend);
 	const output = [
 		{

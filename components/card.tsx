@@ -45,7 +45,8 @@ export default function DataCard({CardType, time}: {CardType: string, time: any}
     var fieldNameTwo = "Qualification";
     var fieldValueTwo = data[0]["data"][CardType]["items"][0]["verificationResult"]["visaSubclassDisplayText"];
     var fieldNameThree = "Expiry date";
-    var fieldValueThree = data[0]["data"][CardType]["items"][0]["verificationResult"]["expiryDate"];
+    const fieldValueThreeBefore = new Date(data[0]["data"][CardType]["items"][0]["verificationResult"]["expiryDate"]);
+    var fieldValueThree = fieldValueThreeBefore.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'})
   }
 
   
@@ -68,8 +69,8 @@ export default function DataCard({CardType, time}: {CardType: string, time: any}
         <CardBody>
             <table className="table-fixed">
                 <tbody>
-                    <tr className="col-w/2">
-                        <td>
+                    <tr className="col-w/2 pb-5">
+                        <td className="pb-4">
                             <p className="text-xs">
                                 {fieldNameOne}
                             </p>
@@ -77,7 +78,7 @@ export default function DataCard({CardType, time}: {CardType: string, time: any}
                                 {fieldValueOne}
                             </p>
                         </td>
-                        <td>
+                        <td className="pb-4">
                             <p className="text-xs">
                                 {fieldNameTwo}
                             </p>
