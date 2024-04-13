@@ -41,9 +41,9 @@ export default function DataCard({CardType, time}: {CardType: string, time: any}
   else {
     var cardTitle = "Right to Work";
     var fieldNameOne = "Visa Sub Class";
-    var fieldValueOne= data[0]["data"][CardType]["items"][0]["verificationResult"]["resultDisplayText"];
-    var fieldNameTwo = "Qualification";
-    var fieldValueTwo = data[0]["data"][CardType]["items"][0]["verificationResult"]["visaSubclassDisplayText"];
+    var fieldValueOne = data[0]["data"][CardType]["items"][0]["verificationResult"]["visaSubclassDisplayText"];
+    var fieldNameTwo = "Work rights";
+    var fieldValueTwo = data[0]["data"][CardType]["items"][0]["verificationResult"]["resultDisplayText"];
     var fieldNameThree = "Expiry date";
     const fieldValueThreeBefore = new Date(data[0]["data"][CardType]["items"][0]["verificationResult"]["expiryDate"]);
     var fieldValueThree = fieldValueThreeBefore.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'})
@@ -106,7 +106,6 @@ export default function DataCard({CardType, time}: {CardType: string, time: any}
                         </td>
                     </tr>
                 </tbody>
-
             </table>
         </CardBody>
     </Card>
