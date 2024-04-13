@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 
 export async function GET(request: NextRequest) {
     const res = await fetch(process.env.BACKEND_API + "/api/certsyjwt", {
-        cache: "no-store",
     });
 
     const data = await res.json();
@@ -22,7 +21,6 @@ export async function GET(request: NextRequest) {
             headers: headers,
             body: JSON.stringify([
                 {
-                    cache: "no-store",
                     operationName: "getDashboardData",
                     variables: {},
                     query: "query getDashboardData {\n\n  auRtw: candidateAuRtwSubmissionSignalCollectionFetch {\n    items {\n      id\n      status\n      createdAt\n      verificationResult {\n          expirationStatus\n          expiryDate\n          fullName\n          resultDisplayText\n          verificationDocumentFullName\n          verificationDocument\n          visaSubclassDisplayText\n          verifiedAt\n      }\n    }\n  }\n\n  education: candidateEducationSubmissionCollectionFetch {\n    items {\n      id\n      status\n      createdAt\n      verificationResult {\n          fullName\n          educationProvider\n          qualification\n          conferralYear\n          verifiedAt\n          courseName\n          majors\n          withHonours\n      }\n    }\n  }\n}",
@@ -34,7 +32,7 @@ export async function GET(request: NextRequest) {
     const graphqlData = await graphqlRes.json();
 
     const path = "/api/graphql";
-    revalidatePath(path);
+    // revalidatePath(path);
 
     return NextResponse.json(graphqlData);
 }

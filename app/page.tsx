@@ -3,7 +3,6 @@ import { atomOneDarkReasonable } from "react-syntax-highlighter/dist/cjs/styles/
 import SyntaxHighlighter from "react-syntax-highlighter";
 import React from "react";
 import DataCard from "../components/card";
-import CurlButton from "../components/curlButton";
 
 export default function Home() {
     const selectvalue = "bash";
