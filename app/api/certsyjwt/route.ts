@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
 export async function GET(request: NextRequest) {
-    const res = await fetch(
-      process.env.BACKEND_API + "/api/certsyjwt",
-      {cache: 'no-store'});
-    // const ress = await fetch("http://localhost:8000/api/certsyjwt");
+    const res = await fetch(process.env.BACKEND_API + "/api/certsyjwt", {
+        cache: "no-store",
+    });
+
     const data = await res.json();
 
     const path = "/api/certsyjwt";
@@ -15,4 +15,4 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(data.jwt);
 }
 
-export const runtime = 'edge';
+export const runtime = "edge";
