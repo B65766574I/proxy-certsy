@@ -92,6 +92,9 @@ export default function Home() {
                     {JSON.stringify(output, null, 1)}
                 </SyntaxHighlighter>
             </div>
+            <div className="w-4/5">
+                <h2 className={subtitle()}>Refresh if loading is stuck</h2>
+            </div>
             <DataCard CardType="auRtw" time={Date.now()} />
             <DataCard CardType="education" time={Date.now()} />
         </section>
