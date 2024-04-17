@@ -21,16 +21,26 @@ export default function DataCard({
 }) {
     const [data, setData] = useState(null);
     const [isLoading, setLoading] = useState(true);
-    // const [count, setCount] = useState(0);
 
     useEffect(() => {
-        fetch("/api/graphql")
-            .then((res) => res.json())
-            .then((data) => {
+        const fetchData = async () => {
+            try {
+                const result = await fetch("/api/graphql");
+                const data = await result.json();
                 setData(data);
                 setLoading(false);
-            });
-    }, [isLoading]);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                await new Promise(resolve => setTimeout(resolve, 20000));
+                const result = await fetch("/api/graphql");
+                const data = await result.json();
+                setData(data);
+                setLoading(false);
+            }
+
+        }
+        fetchData();
+    }, []);
 
     if (isLoading) {
         return <Spinner />;

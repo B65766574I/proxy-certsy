@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 
 export async function GET(request: NextRequest) {
     const res = await fetch(process.env.BACKEND_API + "/api/certsyjwt", {
+        cache: "no-store",
     });
 
     const data = await res.json();
@@ -32,7 +33,7 @@ export async function GET(request: NextRequest) {
     const graphqlData = await graphqlRes.json();
 
     const path = "/api/graphql";
-    // revalidatePath(path);
+    revalidatePath(path);
 
     return NextResponse.json(graphqlData);
 }

@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
     });
 
     const data = await res.json();
-
+    
     const path = "/api/certsyjwt";
     revalidatePath(path);
 
