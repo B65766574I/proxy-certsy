@@ -43,11 +43,11 @@ export default function DataCard({
     }, []);
 
     if (isLoading) {
-        return <Spinner />;
+        return (<Spinner label="Loading..." />);
     }
 
     if (!data) {
-        return <Spinner />;
+        return (<Spinner label="Loading..." />);
     }
     const VerifiedOn = new Date(
         data[0]["data"][CardType]["items"][0]["verificationResult"][
