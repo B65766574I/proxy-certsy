@@ -6,7 +6,6 @@ import DataCard from "../components/card";
 import Collapse from "../components/collapsible";
 import Code from "../components/code";
 
-
 export default function Home() {
     const selectvalue = "bash";
     const frontend = process.env.NEXT_PUBLIC_BASE_URL;
@@ -65,32 +64,34 @@ export default function Home() {
             },
         },
     ];
-    
+
     const title1 = "Curl Command";
-    const desc1 = "A cURL command for making a GraphQL query to the Certsy API, which returns the Australian Right to Work Visa Entitlement and Educational Qualification"
+    const desc1 =
+        "cURL command for making a GraphQL query to the Certsy API, which returns the Australian Right to Work Visa Entitlement and Educational Qualification";
 
     return (
         <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-2">
             <div className="inline-block max-w-lg text-center justify-center">
-                <h1 className={title()}>Balaji&nbsp;</h1>
-                <h1 className={title({ color: "violet" })}>Chidambaram</h1> 
+                <h1 className={title()}>Balaji's&nbsp;</h1>
+                <h1 className={title({ color: "violet" })}>Certsy Proxy</h1>
                 <br />
             </div>
-            <div className="w-4/5">
-                {/* <h2 className={subtitle()}>Bash Command</h2> */}
-                <Collapse title={title1} description={desc1} key="1" alabel={title1} />
+            <div className="w-5/6">
+                <Collapse
+                    title={title1}
+                    description={desc1}
+                    key="1"
+                    alabel={title1}
+                />
             </div>
-            <div className="h-full w-4/5 flex flex-col rounded-md overflow-hidden text-xs">
+            <div className="h-full w-5/6 flex flex-col rounded-md overflow-hidden text-xs">
                 <Code language="bash" code={textfield} />
             </div>
-            <div className="w-4/5">
+            <div className="w-5/6">
                 <h2 className={subtitle()}>GraphQL Response</h2>
             </div>
-            <div className="h-full w-4/5 flex flex-col rounded-md overflow-hidden text-xs">
+            <div className="h-full w-5/6 flex flex-col rounded-md overflow-hidden text-xs">
                 <Code language="json" code={JSON.stringify(output, null, 1)} />
-            </div>
-            <div className="w-4/5">
-                <h2 className={subtitle()}>Refresh if loading is stuck</h2>
             </div>
             <DataCard CardType="auRtw" time={Date.now()} />
             <DataCard CardType="education" time={Date.now()} />

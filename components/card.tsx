@@ -31,24 +31,24 @@ export default function DataCard({
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching data:", error);
-                await new Promise(resolve => setTimeout(resolve, 20000));
+                await new Promise((resolve) => setTimeout(resolve, 20000));
                 const result = await fetch("/api/graphql");
                 const data = await result.json();
                 setData(data);
                 setLoading(false);
             }
-
-        }
+        };
         fetchData();
     }, []);
 
     if (isLoading) {
-        return (<Spinner label="Loading..." />);
+        if (CardType == "education") {
+            return <Spinner label="Loading Education Qualifications..." />;
+        } else {
+            return <Spinner label="Loading Right to Work..." />;
+        }
     }
 
-    if (!data) {
-        return (<Spinner label="Loading..." />);
-    }
     const VerifiedOn = new Date(
         data[0]["data"][CardType]["items"][0]["verificationResult"][
             "verifiedAt"
@@ -97,7 +97,7 @@ export default function DataCard({
     }
 
     return (
-        <Card className="max-w-[800px] w-4/5">
+        <Card className="max-w-[600px] w-5/6">
             <div className="flex flex-col py-2">
                 <p className="text-2xl text-center text-blue-500">
                     {cardTitle}
