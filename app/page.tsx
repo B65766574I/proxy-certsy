@@ -5,6 +5,7 @@ import React from "react";
 import DataCard from "../components/card";
 import Collapse from "../components/collapsible";
 import Code from "../components/code";
+import Image from "next/image";
 
 export default function Home() {
     const selectvalue = "bash";
@@ -86,6 +87,19 @@ export default function Home() {
             </div>
             <div className="h-full w-5/6 flex flex-col rounded-md overflow-hidden text-xs">
                 <Code language="bash" code={textfield} />
+            </div>
+            <div className="w-5/6">
+                <a
+                    href="https://www.postman.com/dark-meadow-987259/workspace/public-proxycertsy/collection/17852534-02496ba0-431d-4d51-99e6-f0fb23969498"
+                    target="_blank"
+                >
+                    <Image
+                        src="https://run.pstmn.io/button.svg"
+                        width={150}
+                        height={100}
+                        alt="Run in Postman"
+                    />
+                </a>
             </div>
             <div className="w-5/6">
                 <h2 className={subtitle()}>GraphQL Response</h2>
