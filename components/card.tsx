@@ -76,17 +76,17 @@ export default function DataCard({
         var cardTitle = "Right to Work";
         var fieldNameOne = "Visa Sub Class";
         var fieldValueOne =
-            data[0]["data"][CardType]["items"][0]["verificationResult"][
+            data[0]["data"][CardType]["items"][1]["verificationResult"][
                 "visaSubclassDisplayText"
             ];
         var fieldNameTwo = "Work rights";
         var fieldValueTwo =
-            data[0]["data"][CardType]["items"][0]["verificationResult"][
+            data[0]["data"][CardType]["items"][1]["verificationResult"][
                 "resultDisplayText"
             ];
         var fieldNameThree = "Expiry date";
         const fieldValueThreeBefore = new Date(
-            data[0]["data"][CardType]["items"][0]["verificationResult"][
+            data[0]["data"][CardType]["items"][1]["verificationResult"][
                 "expiryDate"
             ]
         );
