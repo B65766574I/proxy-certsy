@@ -18,53 +18,63 @@ export default function Home() {
         );
     const output = [
         {
-            data: {
-                auRtw: {
-                    items: [
-                        {
-                            id: "6058278c-318c-4572-bc95-26ae4a9aff06",
-                            status: "verified",
-                            createdAt: "2024-03-27T12:49:15Z",
-                            verificationResult: {
-                                expirationStatus: null,
-                                expiryDate: "2025-12-08",
-                                fullName: "Balakrishnan Chidambaram",
-                                resultDisplayText:
-                                    "Temporary unrestricted work rights in Australia",
-                                verificationDocumentFullName:
-                                    "Balakrishnan Chidambaram",
-                                verificationDocument: "au_visa_grant_notice",
-                                visaSubclassDisplayText:
-                                    "Temporary Graduate Visa (485)",
-                                verifiedAt: "2024-03-27T12:50:29Z",
-                            },
-                        },
-                    ],
+          "data": {
+            "auRtw": {
+              "items": [
+                {
+                  "id": "eae8d279-ca07-4340-8921-d1503bfcad29",
+                  "status": "verified",
+                  "createdAt": "2024-06-06T03:01:33Z",
+                  "verificationResult": {
+                    "expirationStatus": null,
+                    "expiryDate": "2025-12-08",
+                    "fullName": "Balakrishnan Chidambaram",
+                    "resultDisplayText": "Temporary unrestricted work rights in Australia",
+                    "verificationDocumentFullName": "Balakrishnan Chidambaram",
+                    "verificationDocument": "au_visa_grant_notice",
+                    "visaSubclassDisplayText": "Temporary Graduate Visa (485)",
+                    "verifiedAt": "2024-06-06T03:03:16Z"
+                  }
                 },
-                education: {
-                    items: [
-                        {
-                            id: "869daa0a-e37a-419d-89cd-f6ba7c2ddae9",
-                            status: "verified",
-                            createdAt: "2024-03-27T12:51:12Z",
-                            verificationResult: {
-                                fullName: "Balakrishnan Chidambaram",
-                                educationProvider:
-                                    "The University of New South Wales",
-                                qualification:
-                                    "Master of Information Technology",
-                                conferralYear: "2022",
-                                verifiedAt: "2024-03-28",
-                                courseName: "Master of Information Technology",
-                                majors: [],
-                                withHonours: false,
-                            },
-                        },
-                    ],
-                },
+                {
+                  "id": "924f13fb-6a3f-42a4-a1d0-c92a15293fc8",
+                  "status": "verified",
+                  "createdAt": "2024-06-22T16:44:13Z",
+                  "verificationResult": {
+                    "expirationStatus": null,
+                    "expiryDate": "2027-12-08",
+                    "fullName": "Balakrishnan Chidambaram",
+                    "resultDisplayText": "Temporary unrestricted work rights in Australia",
+                    "verificationDocumentFullName": "Balakrishnan Chidambaram",
+                    "verificationDocument": "au_visa_grant_notice",
+                    "visaSubclassDisplayText": "Temporary Graduate Visa (485)",
+                    "verifiedAt": "2024-06-22T16:45:41Z"
+                  }
+                }
+              ]
             },
-        },
-    ];
+            "education": {
+              "items": [
+                {
+                  "id": "4604363a-01ab-47f6-9c4c-56df14723c72",
+                  "status": "verified",
+                  "createdAt": "2024-06-06T03:10:26Z",
+                  "verificationResult": {
+                    "fullName": "Balakrishnan Chidambaram",
+                    "educationProvider": "The University of New South Wales",
+                    "qualification": "Master of Information Technology",
+                    "conferralYear": "2022",
+                    "verifiedAt": "2024-06-06",
+                    "courseName": "Master of Information Technology",
+                    "majors": [],
+                    "withHonours": false
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ];
 
     const title1 = "Curl Command";
     const desc1 =
